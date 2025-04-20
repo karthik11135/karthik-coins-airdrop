@@ -37,8 +37,8 @@ export const airdropTokens = async (
   receiverAddress: string,
   tokens: string
 ) => {
-  const receiverPublicKey = new PublicKey(receiverAddress);
   try {
+    const receiverPublicKey = new PublicKey(receiverAddress);
     const amount = (tokens as unknown as number) * LAMPORTS_PER_SOL;
 
     const sourceAssociatedTokenAccount =
