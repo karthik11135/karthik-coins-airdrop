@@ -1,6 +1,9 @@
 'use client';
 import { useState } from 'react';
 import { airdropTokens } from '@/actions/airdrop';
+import { HyperText } from "@/components/magicui/hyper-text";
+import { AuroraText } from '@/components/magicui/aurora-text';
+import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 
 export default function Home() {
   const [userAdd, setUserAdd] = useState('');
@@ -10,7 +13,7 @@ export default function Home() {
   const [loader, setLoader] = useState(false);
 
   const submitHandler = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     e.preventDefault();
     if (!userAdd || !tokens) return;
@@ -26,12 +29,13 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-black  h-screen text-white text-center">
-      <h1 className="text-4xl text-blue-400 p-10 font-black">
-        Karthik coins free airdrop on devnet!!
+    <div className="bg-black p-10 h-screen text-white text-center">
+      <h1 className="text-7xl mb-10 rounded-md w-3/6 mx-auto p-10 font-black">
+      <HyperText>Karthik Coins free</HyperText>
+      <AuroraText>AIRDROP</AuroraText> <span className="text-3xl"> on devnet </span>
       </h1>
       <form className="">
-        <label className="me-4">Select your address</label>
+        <label className="me-4 mb-3">Select your address</label>
         <input
           onChange={(e) => setUserAdd(e.target.value)}
           type="text"
@@ -56,12 +60,12 @@ export default function Home() {
         <br></br>
 
         {!loader ? (
-          <button
+          <div
             onClick={submitHandler}
-            className="px-5 py-1.5 rounded border cursor-pointer hover:-translate-y-0.5 transition-all"
+            className="px-5 py-1.5 font-bold text-3xl rounded m-7 cursor-pointer hover:-translate-y-0.5 transition-all"
           >
-            Get tokens
-          </button>
+            <InteractiveHoverButton>Print money</InteractiveHoverButton>
+          </div>
         ) : (
           'loading...'
         )}
